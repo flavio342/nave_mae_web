@@ -1,4 +1,4 @@
-<template src="./template.html"></template>
-<script src="./template.js"></script>
-<style src="./template.scss" scoped lang="scss"></style>
+<template src="./_template.html"></template>
+<script src="./_template.js"></script>
+<style src="./_template.scss" scoped lang="scss"></style>
 

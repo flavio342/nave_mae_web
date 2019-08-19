@@ -1,5 +1,5 @@
 export default {
-  name: "template",
+  name: "_template",
   components: {},
   props: [],
   data() {

@@ -14,13 +14,24 @@ export default {
     return {
       menu: [
         {
-          href: "",
+          href: "/dashboard",
+          title: "Dashboard",
+          icon: {
+            element: "font-awesome-icon",
+            class: "side-bar-icon",
+            attributes: {
+              icon: "tachometer-alt"
+            }
+          }
+        },
+        {
+          href: "/users",
           title: "Usuários",
           icon: {
             element: "font-awesome-icon",
             class: "side-bar-icon",
             attributes: {
-              icon: "sign-in-alt"
+              icon: "users"
             }
           }
         }

@@ -1,0 +1,32 @@
+@import "../../main.scss";
+
+.custom-table-title {
+  font-size: 20px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-family: "Raleway";
+}
+
+.custom-table-container {
+  min-height: 100vh;
+}
+
+.custom-table-card {
+  margin: auto;
+  width: 80%;
+  background-color: white !important;
+
+  border-radius: 5px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  text-align: left;
+}
+
+.table th,
+.table td {
+  border-top: None !important;
+}
+
+.table .thead-dark th {
+  background-color: $color-dark !important;
+  border-color: $color-dark !important;
+}

@@ -18,10 +18,20 @@ import {
   faChevronLeft,
   faArrowsAltH,
   faShoppingCart,
-  faSignInAlt
+  faSignInAlt,
+  faUsers,
+  faTachometerAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-library.add(faChevronRight, faChevronLeft, faArrowsAltH, faShoppingCart, faSignInAlt);
+library.add(
+  faChevronRight,
+  faChevronLeft,
+  faArrowsAltH,
+  faShoppingCart,
+  faSignInAlt,
+  faUsers,
+  faTachometerAlt
+);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 import VueSession from "vue-session";
