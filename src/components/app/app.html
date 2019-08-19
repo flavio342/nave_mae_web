@@ -1,0 +1,8 @@
+<div id="app">
+    <sidebar-menu @item-click="onItemClick" theme="white-theme" :collapsed="true" width="200px" :menu="menu">
+        <span slot="toggle-icon">
+            <font-awesome-icon slot="arrowRight" icon="arrows-alt-h" />
+        </span>
+    </sidebar-menu>
+    <router-view />
+</div>

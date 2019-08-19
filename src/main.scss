@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway|Roboto&display=swap");
+
+@font-face {
+  font-family: "Avenir";
+  src: url("~@/assets/fonts/avenir.woff") format("woff");
+}
+
+$color-regular: black;
+$color-light: #d3d3d3;
+$color-hover: gray;
+$color-button: #6c757d;
+$color-highlight: #4793a3;
+$color-dark: #212121;
+$color-error: #8b0000;
+
+.a {
+  color: $color-hover !important;
+}
+
+html,
+body {
+  margin: 0 !important;
+}
+
+* {
+  font-family: "Avenir";
+}
+
+.left {
+  text-align: left !important;
+}
+
+.right {
+  text-align: right !important;
+}
+
+.small-icon {
+  width: 20px;
+}
+
+.clickable {
+  cursor: pointer !important;
+}
+
+.row {
+  margin: 15px auto;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+*:focus,
+.uneditable-input:focus {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 0, 0, 0.1) !important;
+  outline: 0 none !important;
+}
+
+.page-container {
+  text-align: center;
+}
+
+a:focus {
+  border: none;
+  box-shadow: none !important;
+}
+
+button:focus {
+  outline: 0 none !important;
+  box-shadow: none !important;
+}
+
+.error {
+  color: $color-error;
+  font-size: 13px;
+  margin: 10px 0;
+}
+
+.outline-button {
+  background-color: transparent !important;
+  color: $color-dark !important;
+  border: 1px solid $color-button !important;
+}
+
+.outline-button:hover {
+  background-color: $color-button !important;
+  color: white !important;
+  border: 1px solid $color-button !important;
+}
