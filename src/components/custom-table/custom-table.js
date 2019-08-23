@@ -26,6 +26,10 @@ export default {
         cpf: {
           label: "CPF",
           sortable: true
+        },
+        first_contact: {
+          label: "Primeiro Contato",
+          sortable: true
         }
       }
     };
