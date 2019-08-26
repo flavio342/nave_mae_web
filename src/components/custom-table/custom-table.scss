@@ -182,3 +182,60 @@
 .false-icon {
   color: $color-error;
 }
+
+.modal-title {
+  margin: 20px auto 5px auto;
+  font-size: 20px;
+  font-family: "Raleway";
+  text-transform: uppercase;
+}
+
+.delete-item-div {
+  background-color: $color-lightest;
+  margin: 30px auto;
+  width: 80%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.edit-div {
+  margin: 30px auto;
+  width: 80%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.delete-button {
+  width: 80%;
+  margin: auto;
+}
+
+.delete-buttons-div {
+  width: 80%;
+}
+
+.label-item {
+  background-color: $color-light;
+  width: 30%;
+  display: inline-flex;
+  margin-right: 5%;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+.field-item {
+  width: 55%;
+  display: inline-flex;
+}
+
+.value-item {
+  width: 55%;
+  display: inline-flex;
+  background-color: $color-lightest;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+
+.custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
+  background-color: $color-dark;
+}

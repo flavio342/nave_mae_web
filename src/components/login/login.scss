@@ -1,1 +1,15 @@
 @import "../../main.scss";
+
+.login-div {
+  width: 30%;
+  margin: 50px auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  padding: 20px 50px !important;
+}
+
+.modal-title {
+  font-family: "Raleway";
+  text-transform: uppercase;
+}

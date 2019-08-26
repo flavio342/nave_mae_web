@@ -24,7 +24,8 @@ import {
   faTrashAlt,
   faPlus,
   faSearch,
-  faCheckCircle
+  faCheckCircle,
+  faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(
@@ -41,9 +42,13 @@ library.add(
   faTrashAlt,
   faPlus,
   faSearch,
-  faCheckCircle
+  faCheckCircle,
+  faSignOutAlt
 );
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 import VueSession from "vue-session";
 Vue.use(VueSession, { persist: true });
+
+import VueTheMask from "vue-the-mask";
+Vue.use(VueTheMask);

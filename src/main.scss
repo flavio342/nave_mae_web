@@ -18,7 +18,10 @@ $color-ok: #008000;
 $color-error: #8b0000;
 
 .a {
-  color: $color-hover !important;
+  color: $color-darkest !important;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer !important;
 }
 
 html,
@@ -98,6 +101,11 @@ button:focus {
   border-color: $color-regular !important;
 }
 
+.btn-secondary:hover {
+  background-color: $color-dark !important;
+  border-color: $color-dark !important;
+}
+
 .outline-button {
   background-color: transparent !important;
   color: $color-regular !important;
@@ -118,4 +126,8 @@ button:focus {
   float: right;
   width: 200px;
   text-align: right;
+}
+
+.fill {
+  width: 100%;
 }

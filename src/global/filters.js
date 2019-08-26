@@ -1,5 +1,13 @@
 import Vue from "vue";
 
+Vue.filter("format", function(value, type) {
+  if (type) {
+    return Vue.filter(type)(value);
+  } else {
+    return value;
+  }
+});
+
 Vue.filter("toCurrency", function(value) {
   if (typeof value !== "number") {
     return value;
@@ -20,6 +28,10 @@ Vue.filter("negative", function(value) {
 });
 
 Vue.filter("phone", function(value) {
+  if (!value) {
+    return "";
+  }
+
   let phone = "";
   let mask = "";
   if (value.length == 11) {
@@ -44,6 +56,10 @@ Vue.filter("phone", function(value) {
 });
 
 Vue.filter("cpf", function(value) {
+  if (!value) {
+    return "";
+  }
+
   let phone = "";
   let mask = "***.***.***-**";
 
@@ -61,3 +77,5 @@ Vue.filter("cpf", function(value) {
   }
   return phone;
 });
+
+Vue.prototype.$filters = Vue.options.filters;

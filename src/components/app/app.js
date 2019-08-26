@@ -17,7 +17,13 @@ export default {
       this.$router.push("/login");
     }
   },
-  methods: {},
+  methods: {
+    onItemClick(event, item) {
+      if (item.ref == "log_out") {
+        this.log_out();
+      }
+    }
+  },
   data() {
     return {
       menu: [
@@ -40,6 +46,18 @@ export default {
             class: "side-bar-icon",
             attributes: {
               icon: "users"
+            }
+          }
+        },
+        {
+          href: "",
+          title: "Sair",
+          ref: "log_out",
+          icon: {
+            element: "font-awesome-icon",
+            class: "side-bar-icon",
+            attributes: {
+              icon: "sign-out-alt"
             }
           }
         }

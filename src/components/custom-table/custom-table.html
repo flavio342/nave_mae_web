@@ -33,7 +33,7 @@
       ref="customTable"
       hover
       head-variant="dark"
-      :selectable="table_info.options.delete"
+      :selectable="table_info.options.delete != null"
       :filter="filter"
       :filterIncludedFields="filterOn"
       :items="table_info.objs"
@@ -53,13 +53,16 @@
     <template slot="[cpf]" slot-scope="data">
         {{data.value | cpf}}
     </template>
+    <template slot="[name]" slot-scope="data">
+      <div v-on:click="open_edit(data)" class="a">{{ data.value }}</div>
+    </template>
   </b-table>
   </div>
   <div class="buttons-div">
     <b-container>
       <b-row>
         <b-col cols="1" class="left">
-          <b-button class="outline-button" v-if="table_info.options.delete">
+          <b-button v-on:click="open_delete_selected()" class="outline-button" v-if="table_info.options.delete">
             <font-awesome-icon  icon="trash-alt" />
           </b-button>
         </b-col>
@@ -72,11 +75,111 @@
           ></b-pagination>
         </b-col>
         <b-col cols="1" class="right">
-          <b-button v-if="table_info.options.add">
+          <b-button v-on:click="open_add()" v-if="table_info.options.add">
               <font-awesome-icon  icon="plus" />
           </b-button>
         </b-col>
       </b-row>
     </b-container>
   </div>
+  <b-modal id="modal-delete" no-stacking>
+    <template slot="modal-header">
+      <div></div>
+    </template>
+    <template slot="default">
+      <div>
+        <div class="modal-title">
+          Deletar
+        </div>
+        <div class="modal-text">
+          Tem certeza que deseja deletar os itens abaixo?
+        </div>
+        <div class="delete-item-div" v-for="item in selected">
+          {{item.repr}}
+        </div>
+      </div>
+      <b-container class="delete-buttons-div">
+        <b-row>
+          <b-col cols="6">
+            <b-button v-on:click="$bvModal.hide('modal-delete')" block class="delete-button outline-button">
+              Cancelar
+          </b-button>
+          </b-col>
+          <b-col cols="6">
+            <b-button v-on:click="delete_selected()" block class="delete-button">
+              Sim
+          </b-button>
+          </b-col>
+        </b-row>
+      </b-container>
+    </template>
+    <template slot="modal-footer">
+      <div></div>
+    </template>
+  </b-modal>
+  <b-modal id="modal-save" size="lg" no-stacking>
+    <template slot="modal-header">
+      <div></div>
+    </template>
+    <template slot="default">
+      <div>
+        <div class="modal-title">
+          {{ table_info.title_singular }}
+        </div>
+      </div>
+      <b-container class="edit-div">
+        <div v-for="item in table_info.saveFields">
+          <b-row>
+            <b-col cols="12">
+              <div v-if="item.read_only && save_type == 'edit'">
+                <div class="label-item">
+                  {{item.label}}
+                </div>
+                <div v-if="item.type != 'bool'" class="value-item">
+                    {{item.value | format(item.filter) }}
+                </div>
+                <div v-if="item.type == 'bool'" class="value-item">
+                    <b-form-checkbox disabled v-model="item.value"></b-form-checkbox>
+                </div>
+              </div>
+              <div v-if="!item.read_only">
+                <div class="label-item">
+                  {{item.label}}
+                </div>
+                <div v-if="item.type != 'select' && item.type != 'bool'" class="field-item">
+                  <div v-if="item.mask" class="fill">
+                    <b-form-input v-mask="item.mask" v-model="item.value"></b-form-input>
+                  </div>
+                  <div v-if="!item.mask" class="fill">
+                    <b-form-input v-model="item.value"></b-form-input>
+                  </div>
+                </div>
+                <div v-if="item.type == 'select'" class="field-item">
+                  <b-form-select v-model="item.value" :options="item.options"></b-form-select>
+                </div>
+                <div v-if="item.type == 'bool'" class="field-item">
+                    <b-form-checkbox v-model="item.value"></b-form-checkbox>
+                </div>
+              </div>
+            </b-col>
+          </b-row>
+        </div>
+        <b-row v-if="(save_type == 'add' && table_info.options.add) || (save_type == 'edit' && table_info.options.edit)" class="edit-div">
+          <b-col cols="6">
+            <b-button v-on:click="$bvModal.hide('modal-save')" block class="delete-button outline-button">
+              Cancelar
+          </b-button>
+          </b-col>
+          <b-col cols="6">
+            <b-button v-on:click="save()" block class="delete-button">
+              Salvar
+          </b-button>
+          </b-col>
+        </b-row>
+      </b-container>
+    </template>
+    <template slot="modal-footer">
+      <div></div>
+    </template>
+  </b-modal>
 </div>
