@@ -4,7 +4,7 @@
   <div class="filter-div">
     <b-container>
       <b-row>
-        <b-col cols="10" class="left">
+        <b-col cols="6" class="left">
           <b-input-group>
             <b-form-input v-model="filter" placeholder="Pesquisar"></b-form-input>
             <b-input-group-append>
@@ -12,6 +12,15 @@
             </b-input-group-append>
           </b-input-group>
         </b-col>
+        <b-col cols="3" class="left">
+          <b-form-group label="Coluna" label-cols-lg="3" label-align-lg="left">
+            <b-form-select
+              v-model="filterOn[0]"
+              :options="table_info.filterOnOptions"
+            ></b-form-select>
+          </b-form-group>
+        </b-col>
+        <b-col cols="1" class="left"> </b-col>
         <b-col cols="2" class="right">
           <b-form-group label="Quant." label-cols-lg="6" label-align-sm="right">
             <b-form-select v-model="itemsPerPage" :options="itemsPerPageOptions"></b-form-select>
@@ -23,10 +32,12 @@
 
   <div class="custom-table-card">
     <b-table
+      ref="customTable"
       hover
       head-variant="dark"
       :selectable="table_info.options.delete"
       :filter="filter"
+      :filterIncludedFields="filterOn"
       :items="table_info.objs"
       :fields="table_info.fields"
       :current-page="currentPage"
@@ -40,6 +51,7 @@
       <b-row>
         <b-col cols="4" class="left">
           <b-button v-if="table_info.options.delete">Deletar Selecionados</b-button>
+          <b-form-checkbox class="select-all" @change="toggle_select" switch> </b-form-checkbox>
         </b-col>
         <b-col cols="4">
           <b-pagination
@@ -50,7 +62,7 @@
           ></b-pagination>
         </b-col>
         <b-col cols="4" class="right">
-          <b-button v-if="table_info.options.add">Adicionar</b-button>
+          <b-button v-if="table_info.options.add">Adicionar Item</b-button>
         </b-col>
       </b-row>
     </b-container>

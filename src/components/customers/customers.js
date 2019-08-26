@@ -11,36 +11,52 @@ export default {
       table_info: {
         title: "Usuários",
         objs: null,
-        fields: {
-          id: {
+        fields: [
+          {
+            key: "id",
             label: "ID",
             sortable: true
           },
-          name: {
+          {
+            key: "name",
             label: "Nome",
             sortable: true
           },
-          email: {
+          {
+            key: "email",
             label: "E-mail",
             sortable: true
           },
-          phone: {
+          {
+            key: "phone",
             label: "Telefone",
             sortable: true
           },
-          cpf: {
+          {
+            key: "cpf",
             label: "CPF",
             sortable: true
           },
-          first_contact: {
+          {
+            key: "first_contact",
             label: "Primeiro Contato",
             sortable: true
           },
-          active: {
+          {
+            key: "active",
             label: "Ativo",
             sortable: true
           }
-        },
+        ],
+        filterOnOptions: [
+          { value: "", text: "" },
+          { value: "id", text: "ID" },
+          { value: "name", text: "Nome" },
+          { value: "email", text: "E-Mail" },
+          { value: "phone", text: "Telefone" },
+          { value: "first_contact", text: "Primeiro Contato" },
+          { value: "active", text: "Ativo" }
+        ],
         options: {
           add: true,
           delete: true

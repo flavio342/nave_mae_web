@@ -9,6 +9,7 @@ export default {
       selected: [],
       filter: "",
       itemsPerPageOptions: [5, 10, 15, 20],
+      filterOn: [""],
       itemsPerPage: 10,
       currentPage: 1,
       num_items: 0
@@ -20,8 +21,16 @@ export default {
       this.selected = items;
     },
     onFiltered(filteredItems) {
+      console.log(filteredItems);
       this.num_items = filteredItems.length;
       this.currentPage = 1;
+    },
+    toggle_select(checked) {
+      if (checked) {
+        this.$refs.customTable.selectAllRows();
+      } else {
+        this.$refs.customTable.clearSelected();
+      }
     }
   }
 };

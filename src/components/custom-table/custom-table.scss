@@ -64,3 +64,14 @@
 .page-link {
   color: $color-dark;
 }
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-color: $color-dark;
+  background-color: $color-dark;
+}
+
+.select-all {
+  display: inline-flex;
+  margin-left: 20px;
+  padding-top: 8px;
+}
