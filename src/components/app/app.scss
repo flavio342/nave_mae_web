@@ -1,13 +1,13 @@
 @import "../../main.scss";
 
 #app {
-  background-color: $color-lighter;
+  background-color: $color-lightest;
   text-align: center;
 }
 
 .logo {
-  width: 200px;
-  margin: 20px auto;
+  width: 100px;
+  margin: 20px auto 0 auto;
 }
 
 .v-sidebar-menu {

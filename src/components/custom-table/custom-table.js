@@ -6,37 +6,22 @@ export default {
   props: ["table_info"],
   data() {
     return {
-      fields: {
-        id: {
-          label: "ID",
-          sortable: true
-        },
-        name: {
-          label: "Nome",
-          sortable: true
-        },
-        email: {
-          label: "E-mail",
-          sortable: true
-        },
-        phone: {
-          label: "Telefone",
-          sortable: true
-        },
-        cpf: {
-          label: "CPF",
-          sortable: true
-        },
-        first_contact: {
-          label: "Primeiro Contato",
-          sortable: true
-        }
-      }
+      selected: [],
+      filter: "",
+      itemsPerPageOptions: [5, 10, 15, 20],
+      itemsPerPage: 10,
+      currentPage: 1,
+      num_items: 0
     };
   },
   computed: {},
-  mounted: function() {
-    console.log(this.table_info);
-  },
-  methods: {}
+  methods: {
+    onRowSelected(items) {
+      this.selected = items;
+    },
+    onFiltered(filteredItems) {
+      this.num_items = filteredItems.length;
+      this.currentPage = 1;
+    }
+  }
 };

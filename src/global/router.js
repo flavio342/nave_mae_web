@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import customers from "./components/customers/index.vue";
+import customers from "../components/customers/index.vue";
 
 Vue.use(Router);
 

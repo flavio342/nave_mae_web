@@ -9,6 +9,7 @@
 
 .custom-table-container {
   min-height: 100vh;
+  padding-bottom: 50px;
 }
 
 .custom-table-card {
@@ -26,7 +27,40 @@
   border-top: None !important;
 }
 
-.table .thead-dark th {
+.thead-dark th {
   background-color: $color-dark !important;
   border-color: $color-dark !important;
+}
+
+.table {
+  margin-bottom: 0 !important;
+}
+
+.table-primary,
+.table-primary > th,
+.table-primary > td {
+  background-color: $color-light !important;
+}
+
+.buttons-div {
+  margin: 30px auto;
+  width: 80%;
+}
+
+.filter-div {
+  width: 80%;
+  margin: 30px auto;
+}
+
+.form-group {
+  margin-bottom: 0 !important;
+}
+
+.page-item.active .page-link {
+  background-color: $color-regular;
+  border-color: $color-regular;
+}
+
+.page-link {
+  color: $color-dark;
 }
