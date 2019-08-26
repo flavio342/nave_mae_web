@@ -4,32 +4,30 @@
   <div class="filter-div">
     <b-container>
       <b-row>
-        <b-col cols="6" class="left">
-          <b-input-group>
-            <b-form-input v-model="filter" placeholder="Pesquisar"></b-form-input>
-            <b-input-group-append>
-              <b-button :disabled="!filter" @click="filter = ''">Limpar</b-button>
-            </b-input-group-append>
-          </b-input-group>
+        <b-col cols="5" class="left">
+          <font-awesome-icon class="filter-icon" icon="search" />
+          <b-form-input class="filter-field" v-model="filter"></b-form-input>
         </b-col>
         <b-col cols="3" class="left">
-          <b-form-group label="Coluna" label-cols-lg="3" label-align-lg="left">
-            <b-form-select
-              v-model="filterOn[0]"
-              :options="table_info.filterOnOptions"
-            ></b-form-select>
-          </b-form-group>
-        </b-col>
-        <b-col cols="1" class="left"> </b-col>
-        <b-col cols="2" class="right">
-          <b-form-group label="Quant." label-cols-lg="6" label-align-sm="right">
-            <b-form-select v-model="itemsPerPage" :options="itemsPerPageOptions"></b-form-select>
-          </b-form-group>
+          <font-awesome-icon class="filter-icon" icon="filter" />
+          <b-form-select
+            v-model="filterOn[0]"
+            :options="table_info.filterOnOptions"
+            class="filter-field"
+          ></b-form-select>
         </b-col>
       </b-row>
     </b-container>
   </div>
-
+  <div class="select-all-div left">
+    <b-form-checkbox class="select-all" @change="toggle_select" switch>
+      Selecionar Todos
+      </b-form-checkbox>
+      <div class="filter-quant-div">
+          <font-awesome-icon class="filter-icon" icon="list-ol" />
+          <b-form-select  size="sm" class="filter-quant" v-model="itemsPerPage" :options="itemsPerPageOptions"></b-form-select>
+      </div>
+  </div>
   <div class="custom-table-card">
     <b-table
       ref="customTable"
@@ -44,25 +42,39 @@
       :per-page="itemsPerPage"
       @row-selected="onRowSelected"
       @filtered="onFiltered"
-    ></b-table>
+    >
+    <template slot="[active]" slot-scope="data">
+        <font-awesome-icon v-if="data.value == true" class="filter-icon true-icon" icon="check-circle" />
+        <font-awesome-icon v-if="data.value == false" class="filter-icon false-icon" icon="times-circle" />
+    </template>
+    <template slot="[phone]" slot-scope="data">
+        {{data.value | phone}}
+    </template>
+    <template slot="[cpf]" slot-scope="data">
+        {{data.value | cpf}}
+    </template>
+  </b-table>
   </div>
   <div class="buttons-div">
     <b-container>
       <b-row>
-        <b-col cols="4" class="left">
-          <b-button v-if="table_info.options.delete">Deletar Selecionados</b-button>
-          <b-form-checkbox class="select-all" @change="toggle_select" switch> </b-form-checkbox>
+        <b-col cols="1" class="left">
+          <b-button class="outline-button" v-if="table_info.options.delete">
+            <font-awesome-icon  icon="trash-alt" />
+          </b-button>
         </b-col>
-        <b-col cols="4">
+        <b-col cols="10">
           <b-pagination
             v-model="currentPage"
             :total-rows="num_items == 0 ? table_info.objs.length : num_items"
             :per-page="itemsPerPage"
-            align="fill"
+            align="center"
           ></b-pagination>
         </b-col>
-        <b-col cols="4" class="right">
-          <b-button v-if="table_info.options.add">Adicionar Item</b-button>
+        <b-col cols="1" class="right">
+          <b-button v-if="table_info.options.add">
+              <font-awesome-icon  icon="plus" />
+          </b-button>
         </b-col>
       </b-row>
     </b-container>

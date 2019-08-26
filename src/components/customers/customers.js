@@ -30,12 +30,12 @@ export default {
           {
             key: "phone",
             label: "Telefone",
-            sortable: true
+            sortable: false
           },
           {
             key: "cpf",
             label: "CPF",
-            sortable: true
+            sortable: false
           },
           {
             key: "first_contact",

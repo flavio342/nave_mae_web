@@ -14,7 +14,7 @@ $color-dark: #212121;
 $color-darker: #121212;
 $color-darkest: #000000;
 
-$color-button: #d3d3d3;
+$color-ok: #008000;
 $color-error: #8b0000;
 
 .a {
@@ -92,19 +92,29 @@ button:focus {
   margin: 10px 0;
 }
 
-.outline-button {
-  background-color: transparent !important;
-  color: $color-dark !important;
-  border: 1px solid $color-button !important;
-}
-
-.outline-button:hover {
-  background-color: $color-button !important;
-  color: white !important;
-  border: 1px solid $color-button !important;
-}
-
 .btn-secondary {
   background-color: $color-regular !important;
   border-color: $color-regular !important;
+}
+
+.outline-button {
+  background-color: transparent !important;
+  color: $color-regular !important;
+  border: 1px solid $color-regular !important;
+}
+
+.outline-button:hover {
+  background-color: $color-regular !important;
+  color: white !important;
+  border: 1px solid $color-regular !important;
+}
+
+.center {
+  text-align: center;
+}
+
+.filter-quant-div {
+  float: right;
+  width: 200px;
+  text-align: right;
 }

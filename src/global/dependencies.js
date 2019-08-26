@@ -17,7 +17,14 @@ import {
   faShoppingCart,
   faSignInAlt,
   faUsers,
-  faTachometerAlt
+  faTachometerAlt,
+  faTimesCircle,
+  faFilter,
+  faListOl,
+  faTrashAlt,
+  faPlus,
+  faSearch,
+  faCheckCircle
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(
@@ -27,7 +34,14 @@ library.add(
   faShoppingCart,
   faSignInAlt,
   faUsers,
-  faTachometerAlt
+  faTachometerAlt,
+  faTimesCircle,
+  faFilter,
+  faListOl,
+  faTrashAlt,
+  faPlus,
+  faSearch,
+  faCheckCircle
 );
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
