@@ -8,12 +8,20 @@ export default {
   components: {
     SidebarMenu
   },
-  mounted() {},
+  mounted() {
+    let token = this.$session.get("token");
+    if (token) {
+      this.axios.defaults.headers.common["Authorization"] = token;
+      this.$router.push("/users");
+    } else {
+      this.$router.push("/login");
+    }
+  },
   methods: {},
   data() {
     return {
       menu: [
-        {
+        /*{
           href: "/dashboard",
           title: "Dashboard",
           icon: {
@@ -23,7 +31,7 @@ export default {
               icon: "tachometer-alt"
             }
           }
-        },
+        },*/
         {
           href: "/users",
           title: "Usuários",
