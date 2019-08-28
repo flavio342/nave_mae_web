@@ -88,4 +88,11 @@ Vue.filter("removeImageURL", function(value) {
   return v;
 });
 
+Vue.filter("ordinal", function(value) {
+  if (!value) {
+    return "";
+  }
+  return value + "º";
+});
+
 Vue.prototype.$filters = Vue.options.filters;

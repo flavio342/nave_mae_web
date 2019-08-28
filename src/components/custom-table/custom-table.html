@@ -36,6 +36,7 @@
       :selectable="table_info.options.delete != null"
       :filter="filter"
       :filterIncludedFields="filterOn"
+      :filter-function="do_filter"
       :items="table_info.objs"
       :fields="table_info.fields"
       :current-page="currentPage"
@@ -55,6 +56,12 @@
     </template>
     <template slot="[name]" slot-scope="data">
       <div v-on:click="open_edit(data)" class="a">{{ data.value }}</div>
+    </template>
+    <template slot="[exhibition_number]" slot-scope="data">
+      {{data.value | ordinal}}
+    </template>
+    <template slot="[price]" slot-scope="data">
+      {{data.value | toCurrency}}
     </template>
     <template slot="[first_image]" slot-scope="data">
       <div class="table-img-div">
@@ -154,7 +161,7 @@
                 <div class="label-item">
                   {{item.label}}
                 </div>
-                <div v-if="item.type != 'select' && item.type != 'bool' && item.type != 'textarea' && item.type != 'image'" class="field-item">
+                <div v-if="item.type != 'select' && item.type != 'bool' && item.type != 'textarea' && item.type != 'image' && item.type != 'foreign'" class="field-item">
                   <div v-if="item.mask" class="fill">
                     <b-form-input v-mask="item.mask" v-model="item.value"></b-form-input>
                   </div>
@@ -190,8 +197,11 @@
                     <font-awesome-icon  icon="trash-alt" />
                   </b-button>
                 </div>
-                <div class="img-preview-div" v-if="item.url && item.value">
+                <div class="img-preview-div" v-if="item.type == 'image' && item.url && item.value">
                   <img class="img-preview" :src="item.url" alt="">
+                </div>
+                <div v-if="item.type == 'foreign'" class="field-item">
+                  <b-form-select v-model="item.value" :options="item.foreign_options"></b-form-select>
                 </div>
                 <div v-if="errors.save && errors.save[item.key]" class="modal-error error">{{errors.save[item.key][0]}}</div>
               </div>

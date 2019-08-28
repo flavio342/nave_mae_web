@@ -155,6 +155,70 @@ export default {
           this.table_info.saveFields[i].url = URL.createObjectURL(file);
         }
       }
+    },
+    do_filter(data, filter) {
+      let found = false;
+      Object.keys(data).forEach(key => {
+        if (this.filterOn[0] == "" || this.filterOn[0] == key) {
+          for (let i = 0; i < this.table_info.fields.length; i++) {
+            if (this.table_info.fields[i].key == key) {
+              if (this.table_info.fields[i].filter) {
+                let key_arr = key.split("_");
+                if (key_arr[key_arr.length - 1] == "id" && key_arr.length > 1) {
+                  for (let i = 0; i < this.table_info.saveFields.length; i++) {
+                    if (this.table_info.saveFields[i].key == key) {
+                      for (
+                        let j = 0;
+                        j < this.table_info.saveFields[i].foreign_options.length;
+                        j++
+                      ) {
+                        if (
+                          this.table_info.saveFields[i].foreign_options[j].text
+                            .toLowerCase()
+                            .normalize("NFD")
+                            .replace(/[\u0300-\u036f]/g, "")
+                            .includes(
+                              filter
+                                .toLowerCase()
+                                .normalize("NFD")
+                                .replace(/[\u0300-\u036f]/g, "")
+                            )
+                        ) {
+                          if (this.table_info.saveFields[i].foreign_options[j].value == data[key]) {
+                            found = true;
+                          }
+                        }
+                      }
+                    }
+                  }
+                } else {
+                  if (
+                    data[key]
+                      .toString()
+                      .toLowerCase()
+                      .normalize("NFD")
+                      .replace(/[\u0300-\u036f]/g, "")
+                      .includes(
+                        filter
+                          .toLowerCase()
+                          .normalize("NFD")
+                          .replace(/[\u0300-\u036f]/g, "")
+                      )
+                  ) {
+                    found = true;
+                  }
+                }
+              }
+            }
+          }
+        }
+      });
+
+      if (found) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 };
