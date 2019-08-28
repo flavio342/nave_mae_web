@@ -22,8 +22,11 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-button v-on:click="do_login()" class="login-button">
-        Enviar
+      <b-button :disabled="progress.login" v-on:click="do_login()" class="login-button">
+        <div v-if="!progress.login">Enviar</div>
+        <div v-if="progress.login">
+          <b-spinner small></b-spinner>
+        </div>
       </b-button>
     </b-row>
   </b-container>

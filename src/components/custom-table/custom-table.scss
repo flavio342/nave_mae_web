@@ -216,7 +216,7 @@
 
 .label-item {
   background-color: $color-light;
-  width: 30%;
+  width: 40%;
   display: inline-flex;
   margin-right: 5%;
   padding: 5px 15px;
@@ -238,4 +238,33 @@
 
 .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
   background-color: $color-dark;
+}
+
+.custom-file-label {
+  text-align: left !important;
+}
+
+.form-file-div {
+  position: relative;
+  top: -4px;
+}
+
+.form-file-delete {
+  margin-left: 10px;
+}
+
+.img-preview {
+  height: 100px;
+  margin: 10px;
+}
+
+.img-preview-div {
+  text-align: center;
+  background-color: $color-lightest;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.modal-error{
+  text-align: right
 }

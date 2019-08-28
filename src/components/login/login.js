@@ -4,6 +4,9 @@ export default {
   props: [],
   data() {
     return {
+      progress: {
+        login: false
+      },
       login: {
         username: "",
         password: ""
@@ -17,13 +20,18 @@ export default {
   mounted: function() {},
   methods: {
     do_login() {
+      this.progress.login = true;
       this.axios.post("http://127.0.0.1:5000/login_admin", this.login).then(res => {
-        if (res.data.success) {
-          this.$session.set("token", res.data.token);
-          location.reload();
-        } else {
-          this.errors.login = res.data.errors;
-        }
+        setTimeout(() => {
+          if (res.data.success) {
+            this.$session.set("token", res.data.token);
+            this.$router.push("/users");
+            location.reload();
+          } else {
+            this.errors.login = res.data.errors;
+          }
+          this.progress.login = false;
+        }, 1000);
       });
     }
   }

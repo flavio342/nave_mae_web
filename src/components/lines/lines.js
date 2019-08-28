@@ -1,5 +1,5 @@
 export default {
-  name: "customers",
+  name: "lines",
   components: {},
   props: [],
   data() {
@@ -38,102 +38,64 @@ export default {
           }
         },
         {
-          key: "email",
-          label: "E-mail",
-          table_options: {
-            sortable: true,
-            show: true
-          },
-          save_options: {
-            read_only: false,
-            type: "email",
-            mask: null,
-            options: null,
-            filter: null,
-            default: ""
-          }
-        },
-        {
-          key: "phone",
-          label: "Telefone",
+          key: "internal_ref",
+          label: "Referência Interna",
           table_options: {
             sortable: false,
-            show: true
+            show: false
           },
           save_options: {
             read_only: false,
             type: "text",
-            mask: "(##) #####-####",
+            mask: null,
             options: null,
-            filter: "phone",
+            filter: null,
             default: ""
           }
         },
         {
-          key: "cpf",
-          label: "CPF",
+          key: "exhibition_number",
+          label: "Ordem de Exibição",
+          table_options: {
+            sortable: true,
+            show: true
+          },
+          save_options: {
+            read_only: false,
+            type: "number",
+            mask: null,
+            options: null,
+            filter: null,
+            default: ""
+          }
+        },
+        {
+          key: "description",
+          label: "Descrição",
           table_options: {
             sortable: false,
-            show: true
+            show: false
           },
           save_options: {
             read_only: false,
-            type: "text",
-            mask: "###.###.###-##",
-            options: null,
-            filter: "cpf",
-            default: ""
-          }
-        },
-        {
-          key: "first_contact",
-          label: "Primeiro Contato",
-          table_options: {
-            sortable: true,
-            show: true
-          },
-          save_options: {
-            read_only: false,
-            type: "select",
-            mask: null,
-            options: [
-              { value: "Amigo/Familiar", text: "Amigo/Familiar" },
-              { value: "Facebook", text: "Facebook" },
-              { value: "Instagram", text: "Instagram" },
-              { value: "Google", text: "Google" },
-              { value: "Outro", text: "Outro" }
-            ],
-            filter: null,
-            default: ""
-          }
-        },
-        {
-          key: "active",
-          label: "Ativo",
-          table_options: {
-            sortable: true,
-            show: true
-          },
-          save_options: {
-            read_only: false,
-            type: "bool",
+            type: "textarea",
             mask: null,
             options: null,
             filter: null,
-            default: false
+            default: ""
           }
         }
       ],
       table_info: {
-        title: "Usuários",
-        title_singular: "Usuário",
+        title: "Linhas",
+        title_singular: "Linha",
         objs: null,
         fields: [],
         filterOnOptions: [{ value: "", text: "" }],
         options: {
-          add: null,
-          delete: "delete_customers",
-          edit: null
+          add: "lines",
+          delete: "delete_lines",
+          edit: "edit_lines"
         },
         saveFields: []
       }
@@ -174,7 +136,7 @@ export default {
   },
   methods: {
     get_objs() {
-      this.axios.get("http://127.0.0.1:5000/" + "customers").then(
+      this.axios.get("http://127.0.0.1:5000/" + "lines").then(
         res => {
           this.table_info.objs = res.data;
         },

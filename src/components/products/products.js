@@ -1,5 +1,5 @@
 export default {
-  name: "customers",
+  name: "products",
   components: {},
   props: [],
   data() {
@@ -38,15 +38,15 @@ export default {
           }
         },
         {
-          key: "email",
-          label: "E-mail",
+          key: "price",
+          label: "Preço",
           table_options: {
             sortable: true,
             show: true
           },
           save_options: {
             read_only: false,
-            type: "email",
+            type: "number",
             mask: null,
             options: null,
             filter: null,
@@ -54,86 +54,66 @@ export default {
           }
         },
         {
-          key: "phone",
-          label: "Telefone",
+          key: "description",
+          label: "Descrição",
           table_options: {
             sortable: false,
-            show: true
+            show: false
           },
           save_options: {
             read_only: false,
-            type: "text",
-            mask: "(##) #####-####",
+            type: "textarea",
+            mask: null,
             options: null,
-            filter: "phone",
+            filter: null,
             default: ""
           }
         },
         {
-          key: "cpf",
-          label: "CPF",
+          key: "first_image",
+          label: "Primeira Imagem",
           table_options: {
             sortable: false,
-            show: true
+            show: false
           },
           save_options: {
             read_only: false,
-            type: "text",
-            mask: "###.###.###-##",
-            options: null,
-            filter: "cpf",
-            default: ""
-          }
-        },
-        {
-          key: "first_contact",
-          label: "Primeiro Contato",
-          table_options: {
-            sortable: true,
-            show: true
-          },
-          save_options: {
-            read_only: false,
-            type: "select",
-            mask: null,
-            options: [
-              { value: "Amigo/Familiar", text: "Amigo/Familiar" },
-              { value: "Facebook", text: "Facebook" },
-              { value: "Instagram", text: "Instagram" },
-              { value: "Google", text: "Google" },
-              { value: "Outro", text: "Outro" }
-            ],
-            filter: null,
-            default: ""
-          }
-        },
-        {
-          key: "active",
-          label: "Ativo",
-          table_options: {
-            sortable: true,
-            show: true
-          },
-          save_options: {
-            read_only: false,
-            type: "bool",
+            type: "image",
             mask: null,
             options: null,
             filter: null,
-            default: false
+            default: "",
+            url: ""
+          }
+        },
+        {
+          key: "second_image",
+          label: "Segunda Imagem",
+          table_options: {
+            sortable: false,
+            show: false
+          },
+          save_options: {
+            read_only: false,
+            type: "image",
+            mask: null,
+            options: null,
+            filter: null,
+            default: "",
+            url: ""
           }
         }
       ],
       table_info: {
-        title: "Usuários",
-        title_singular: "Usuário",
+        title: "Produtos",
+        title_singular: "Produto",
         objs: null,
         fields: [],
         filterOnOptions: [{ value: "", text: "" }],
         options: {
-          add: null,
-          delete: "delete_customers",
-          edit: null
+          add: "products",
+          delete: "delete_products",
+          edit: "edit_products"
         },
         saveFields: []
       }
@@ -174,7 +154,7 @@ export default {
   },
   methods: {
     get_objs() {
-      this.axios.get("http://127.0.0.1:5000/" + "customers").then(
+      this.axios.get("http://127.0.0.1:5000/" + "products").then(
         res => {
           this.table_info.objs = res.data;
         },

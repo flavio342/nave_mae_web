@@ -12,7 +12,6 @@ export default {
     let token = this.$session.get("token");
     if (token) {
       this.axios.defaults.headers.common["Authorization"] = token;
-      this.$router.push("/users");
     } else {
       this.$router.push("/login");
     }
@@ -48,6 +47,44 @@ export default {
               icon: "users"
             }
           }
+        },
+        {
+          href: "",
+          title: "Loja",
+          ref: "store",
+          icon: {
+            element: "font-awesome-icon",
+            class: "side-bar-icon",
+            attributes: {
+              icon: "store-alt"
+            }
+          },
+          child: [
+            {
+              href: "/lines",
+              title: "Linhas",
+              ref: "line",
+              icon: {
+                element: "font-awesome-icon",
+                class: "side-bar-sub-icon",
+                attributes: {
+                  icon: "tag"
+                }
+              }
+            },
+            {
+              href: "/products",
+              title: "Produtos",
+              ref: "product",
+              icon: {
+                element: "font-awesome-icon",
+                class: "side-bar-sub-icon",
+                attributes: {
+                  icon: "tshirt"
+                }
+              }
+            }
+          ]
         },
         {
           href: "",

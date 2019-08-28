@@ -14,7 +14,14 @@ export default {
       itemsPerPage: 10,
       currentPage: 1,
       num_items: 0,
-      save_type: null
+      save_type: null,
+      errors: {
+        save: null
+      },
+      progress: {
+        delete: false,
+        save: false
+      }
     };
   },
   computed: {},
@@ -39,11 +46,15 @@ export default {
       }
     },
     delete_selected() {
+      this.progress.delete = true;
       this.axios
         .post("http://127.0.0.1:5000/" + this.table_info.options.delete, { items: this.selected })
         .then(
           res => {
-            location.reload();
+            setTimeout(() => {
+              this.progress.delete = false;
+              location.reload();
+            }, 1000);
           },
           err => {
             if (err.response.status == 401) {
@@ -54,6 +65,7 @@ export default {
     },
     open_edit(data) {
       this.save_type = "edit";
+      this.errors.save = null;
       for (let i = 0; i < this.table_info.saveFields.length; i++) {
         this.table_info.saveFields[i].value = data.item[this.table_info.saveFields[i].key];
       }
@@ -64,6 +76,7 @@ export default {
     },
     open_add() {
       this.save_type = "add";
+      this.errors.save = null;
       for (let i = 0; i < this.table_info.saveFields.length; i++) {
         this.table_info.saveFields[i].value = this.table_info.saveFields[i].default;
       }
@@ -73,6 +86,8 @@ export default {
       }, 100);
     },
     save() {
+      this.progress.save = true;
+
       let url = "";
       if (this.save_type == "edit") {
         url = this.table_info.options.edit;
@@ -85,20 +100,27 @@ export default {
         return;
       }
 
-      let c = {};
+      let c = new FormData();
       for (let i = 0; i < this.table_info.saveFields.length; i++) {
         if (this.table_info.saveFields[i].mask) {
-          c[this.table_info.saveFields[i].key] = this.table_info.saveFields[i].value.replace(
-            /\D+/g,
-            ""
+          c.append(
+            this.table_info.saveFields[i].key,
+            this.table_info.saveFields[i].value.replace(/\D+/g, "")
           );
         } else {
-          c[this.table_info.saveFields[i].key] = this.table_info.saveFields[i].value;
+          c.append(this.table_info.saveFields[i].key, this.table_info.saveFields[i].value);
         }
       }
       this.axios.post("http://127.0.0.1:5000/" + url, c).then(
         res => {
-          location.reload();
+          setTimeout(() => {
+            if (res.data.success) {
+              location.reload();
+            } else {
+              this.errors.save = res.data.errors;
+            }
+            this.progress.save = false;
+          }, 1000);
         },
         err => {
           if (err.response.status == 401) {
@@ -106,6 +128,24 @@ export default {
           }
         }
       );
+    },
+    clearFile(file_id) {
+      this.$refs[file_id][0].reset();
+      let key = file_id.split(".")[1];
+      for (let i = 0; i < this.table_info.saveFields.length; i++) {
+        if (this.table_info.saveFields[i].key == key) {
+          this.table_info.saveFields[i].url = null;
+        }
+      }
+    },
+    onFileChange(e) {
+      let file = e.target.files[0];
+      let key = e.target.id.split(".")[1];
+      for (let i = 0; i < this.table_info.saveFields.length; i++) {
+        if (this.table_info.saveFields[i].key == key) {
+          this.table_info.saveFields[i].url = URL.createObjectURL(file);
+        }
+      }
     }
   }
 };
