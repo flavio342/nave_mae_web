@@ -56,6 +56,11 @@
     <template slot="[name]" slot-scope="data">
       <div v-on:click="open_edit(data)" class="a">{{ data.value }}</div>
     </template>
+    <template slot="[first_image]" slot-scope="data">
+      <div class="table-img-div">
+        <img class="table-img" :src="data.value" alt="">
+      </div>
+    </template>
   </b-table>
   </div>
   <div class="buttons-div">
@@ -178,9 +183,9 @@
                     v-model="item.value"
                     placeholder="Escolha um arquivo"
                     browse-text="Pesquisar"
-                    v-if="!item.value"
+                    v-if="!item.value || typeof item.value != 'string'"
                   ></b-form-file>
-                  <div v-if="item.value">{{item.value}}</div>
+                  <div class="file-value-div" v-if="item.value && typeof item.value == 'string'">{{item.value | removeImageURL}}</div>
                   <b-button v-on:click="clearFile('file.' + item.key)" class="form-file-delete outline-button" v-if="item.value">
                     <font-awesome-icon  icon="trash-alt" />
                   </b-button>

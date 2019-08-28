@@ -265,6 +265,29 @@
   border-radius: 10px;
 }
 
-.modal-error{
-  text-align: right
+.modal-error {
+  text-align: right;
+}
+
+.file-value-div {
+  position: relative;
+  top: 5px;
+  text-align: right;
+  width: 100%;
+}
+
+.table-img-div {
+  text-align: center;
+  background-color: $color-lightest;
+  border-radius: 10px;
+}
+
+.table-img {
+  height: 100px;
+  margin: 10px;
+}
+
+.table th,
+.table td {
+  vertical-align: middle !important;
 }

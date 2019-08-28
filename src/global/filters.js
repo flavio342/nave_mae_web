@@ -78,4 +78,14 @@ Vue.filter("cpf", function(value) {
   return phone;
 });
 
+Vue.filter("removeImageURL", function(value) {
+  if (!value) {
+    return "";
+  }
+
+  let v = value.split("/");
+  v = v[v.length - 1];
+  return v;
+});
+
 Vue.prototype.$filters = Vue.options.filters;

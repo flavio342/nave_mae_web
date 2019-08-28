@@ -38,6 +38,22 @@ export default {
           }
         },
         {
+          key: "line_id",
+          label: "Linha",
+          table_options: {
+            sortable: true,
+            show: true
+          },
+          save_options: {
+            read_only: false,
+            type: "text",
+            mask: null,
+            options: null,
+            filter: null,
+            default: ""
+          }
+        },
+        {
           key: "price",
           label: "Preço",
           table_options: {
@@ -74,7 +90,7 @@ export default {
           label: "Primeira Imagem",
           table_options: {
             sortable: false,
-            show: false
+            show: true
           },
           save_options: {
             read_only: false,

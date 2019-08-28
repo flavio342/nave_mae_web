@@ -68,6 +68,9 @@ export default {
       this.errors.save = null;
       for (let i = 0; i < this.table_info.saveFields.length; i++) {
         this.table_info.saveFields[i].value = data.item[this.table_info.saveFields[i].key];
+        if (this.table_info.saveFields[i].type == "image") {
+          this.table_info.saveFields[i].url = data.item[this.table_info.saveFields[i].key];
+        }
       }
       this.$bvModal.show("modal-save");
       setTimeout(() => {
@@ -79,6 +82,9 @@ export default {
       this.errors.save = null;
       for (let i = 0; i < this.table_info.saveFields.length; i++) {
         this.table_info.saveFields[i].value = this.table_info.saveFields[i].default;
+        if (this.table_info.saveFields[i].type == "image") {
+          this.table_info.saveFields[i].url = "";
+        }
       }
       this.$bvModal.show("modal-save");
       setTimeout(() => {
@@ -130,11 +136,14 @@ export default {
       );
     },
     clearFile(file_id) {
-      this.$refs[file_id][0].reset();
+      if (this.$refs[file_id] && this.$refs[file_id].length > 0) {
+        this.$refs[file_id][0].reset();
+      }
       let key = file_id.split(".")[1];
       for (let i = 0; i < this.table_info.saveFields.length; i++) {
         if (this.table_info.saveFields[i].key == key) {
-          this.table_info.saveFields[i].url = null;
+          this.table_info.saveFields[i].url = "";
+          this.table_info.saveFields[i].value = "";
         }
       }
     },
