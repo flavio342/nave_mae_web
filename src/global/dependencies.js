@@ -29,7 +29,22 @@ import {
   faStoreAlt,
   faTag,
   faTshirt,
-  faAngleRight
+  faAngleRight,
+  faUserGraduate,
+  faChalkboardTeacher,
+  faStamp,
+  faHandHoldingUsd,
+  faSchool,
+  faChalkboard,
+  faBook,
+  faStar,
+  faCheck,
+  faCalendarWeek,
+  faHome,
+  faFileAlt,
+  faBell,
+  faComments,
+  faUserFriends
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(
@@ -51,7 +66,22 @@ library.add(
   faStoreAlt,
   faTag,
   faTshirt,
-  faAngleRight
+  faAngleRight,
+  faUserGraduate,
+  faChalkboardTeacher,
+  faStamp,
+  faHandHoldingUsd,
+  faSchool,
+  faChalkboard,
+  faBook,
+  faStar,
+  faCheck,
+  faCalendarWeek,
+  faHome,
+  faFileAlt,
+  faBell,
+  faComments,
+  faUserFriends
 );
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

@@ -7,9 +7,9 @@
     </b-row>
     <b-row>
       <b-col cols="12">
-        <b-form-input placeholder="Username" v-model="login.username"></b-form-input>
-        <div v-if="errors.login && errors.login.username" class="error">
-          {{ errors.login.username[0] }}
+        <b-form-input placeholder="email" v-model="login.email"></b-form-input>
+        <div v-if="errors.login && errors.login.email" class="error">
+          {{ errors.login.email[0] }}
         </div>
       </b-col>
     </b-row>

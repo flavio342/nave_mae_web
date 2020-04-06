@@ -8,7 +8,7 @@ export default {
         login: false
       },
       login: {
-        username: "",
+        email: "",
         password: ""
       },
       errors: {
@@ -21,11 +21,11 @@ export default {
   methods: {
     do_login() {
       this.progress.login = true;
-      this.axios.post("http://127.0.0.1:5000/login_admin", this.login).then(res => {
+      this.axios.post(process.env.VUE_APP_API_URL + "manager_login", this.login).then(res => {
         setTimeout(() => {
           if (res.data.success) {
             this.$session.set("token", res.data.token);
-            this.$router.push("/users");
+            this.$router.push("/");
             location.reload();
           } else {
             this.errors.login = res.data.errors;

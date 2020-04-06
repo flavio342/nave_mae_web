@@ -5,14 +5,15 @@
   src: url("~@/assets/fonts/avenir.woff") format("woff");
 }
 
-$color-regular: gray;
+$color-regular: #1969F2;
 $color-hover: white;
 
-$color-lightest: #eeeeee;
-$color-light: #d3d3d3;
-$color-dark: #212121;
+$color-lightest: #F6FAFF;
+$color-light: #E7F1FF;
+$color-dark: #000336;
 $color-darker: #121212;
 $color-darkest: #000000;
+
 
 $color-ok: #008000;
 $color-error: #8b0000;
@@ -27,7 +28,7 @@ $color-error: #8b0000;
 html,
 body {
   margin: 0 !important;
-  background-color: $color-lightest;
+  background-color: $color-lightest !important;
 }
 
 * {
@@ -99,6 +100,8 @@ button:focus {
 .btn-secondary {
   background-color: $color-regular !important;
   border-color: $color-regular !important;
+  margin: auto;
+  width: 85%;
 }
 
 .btn-secondary:hover {
@@ -130,4 +133,8 @@ button:focus {
 
 .fill {
   width: 100%;
+}
+
+.inner-page{
+  margin: 0 0 0 90px;
 }

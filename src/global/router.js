@@ -1,19 +1,27 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import customers from "../components/customers/index.vue";
 import login from "../components/login/index.vue";
-import lines from "../components/lines/index.vue";
-import products from "../components/products/index.vue";
+import messages from "../components/messages/index.vue"
+import home from "../components/home/index.vue"
+import classes from "../components/classes/index.vue"
+import notifications from "../components/notifications/index.vue"
+import users from "../components/users/index.vue"
+import events from "../components/events/index.vue"
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: "/users",
-      name: "users",
-      component: customers
+      path: "/",
+      name: "messages",
+      component: messages
+    },
+    {
+      path: "/messages",
+      name: "messages",
+      component: messages
     },
     {
       path: "/login",
@@ -21,14 +29,29 @@ export default new Router({
       component: login
     },
     {
-      path: "/lines",
-      name: "lines",
-      component: lines
+      path: "/home",
+      name: "home",
+      component: home
     },
     {
-      path: "/products",
-      name: "products",
-      component: products
+      path: "/classes",
+      name: "classes",
+      component: classes
+    },
+    {
+      path: "/notifications",
+      name: "notifications",
+      component: notifications
+    },
+    {
+      path: "/events",
+      name: "events",
+      component: events
+    },
+    {
+      path: "/users",
+      name: "users",
+      component: users
     }
   ]
 });

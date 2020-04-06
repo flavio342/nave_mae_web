@@ -5,105 +5,47 @@
 }
 
 .logo {
+  width: 50px;
+  margin: 10px auto;
+}
+
+.login-logo{
+  margin: 40px auto 10px auto;
   width: 100px;
-  margin: 20px auto 0 auto;
 }
 
-.v-sidebar-menu {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  color: white !important;
-  background-color: rgba(
-    $color: (
-      #ffffff
-    ),
-    $alpha: 0.5
-  ) !important;
-  text-align: left;
+.logo-div{
+  background-color: white;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
-.vsm--toggle-btn {
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-
-.v-sidebar-menu .vsm--link.vsm--link_level-1.vsm--link_exact-active,
-.v-sidebar-menu.vsm_white-theme .vsm--link_level-1.vsm--link_exact-active,
-.v-sidebar-menu.vsm_white-theme .vsm--link_level-1.vsm--link_active {
-  -webkit-box-shadow: 3px 0px 0px 0px
-    rgba(
-      $color: (
-        #000000
-      ),
-      $alpha: 0.6
-    )
-    inset !important;
-  box-shadow: 3px 0px 0px 0px
-    rgba(
-      $color: (
-        #000000
-      ),
-      $alpha: 0.6
-    )
-    inset !important;
-}
-
-.v-sidebar-menu.vsm_white-theme.vsm_expanded .vsm--item.vsm--item_open .vsm--link_level-1 {
-  background-color: rgba(
-    $color: (
-      #000000
-    ),
-    $alpha: 0.6
-  ) !important;
-}
-
-.v-sidebar-menu.vsm_white-theme .vsm--link_level-1 .vsm--icon {
-  background-color: rgba(
-    $color: (
-      #000000
-    ),
-    $alpha: 0.1
-  );
-}
-
-.v-sidebar-menu.vsm_white-theme .vsm--link_level-1.vsm--link_exact-active .vsm--icon,
-.v-sidebar-menu.vsm_white-theme .vsm--link_level-1.vsm--link_active .vsm--icon {
-  background-color: rgba(
-    $color: (
-      #000000
-    ),
-    $alpha: 0.6
-  ) !important;
-}
-
-.v-sidebar-menu.vsm_collapsed .vsm--mobile-bg {
-  background-color: $color-dark !important;
+.side-bar{
+  background: white;
+  position: fixed;
+  width: 90px;
+  height: 100%;
+  border-right: 1px solid rgba(0,0,0,0.1);
+  padding-top: 15px;
 }
 
 .side-bar-icon {
-  padding: 6px !important;
+  margin-top: 27px;
+  color: gray;
 }
 
-.modal-content {
-  border: none !important;
+.side-bar-icon-div{
+  height: 70px;
+  cursor: pointer;
 }
 
-.modal-footer,
-.modal-header {
-  border: none !important;
-  height: 0;
-  padding: 0 !important;
+.activesidebar{
+  background-color: $color-lightest;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-left: 3px solid $color-regular;
 }
 
-.modal-body {
-  text-align: center !important;
+.activesidebar .side-bar-icon{
+  color: $color-regular !important;
 }
 
-.login-button,
-.signup-button {
-  margin: auto;
-  width: 89%;
-}
-
-.v-sidebar-menu.vsm_white-theme .vsm--dropdown .vsm--icon {
-  margin-top: 5px !important;
-}

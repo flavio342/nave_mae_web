@@ -1,12 +1,30 @@
 <div id="app">
-    <img class="logo" src="../../assets/images/logo.png" alt="">
-    <sidebar-menu @item-click="onItemClick" v-if="this.$session.get('token')" theme="white-theme" :collapsed="true" width="200px" :menu="menu">
-        <span slot="toggle-icon">
-            <font-awesome-icon slot="arrowRight" icon="arrows-alt-h" />
-        </span>
-        <span slot="dropdown-icon">
-            <font-awesome-icon slot="arrowRight" icon="angle-right" />
-        </span>
-    </sidebar-menu>
-    <router-view />
+    <div v-if="this.$session.get('token')" class="logo-div">
+        <img v-if="!data" class="logo" src="../../assets/images/logo.png" alt="">
+        <img v-if="data" class="logo" :src="data.institution.photo" alt="">
+    </div>
+    <div v-if="!this.$session.get('token')">
+        <img class="login-logo" src="../../assets/images/logo.png" alt="">
+    </div>
+    <div v-if="this.$session.get('token')" class="side-bar">
+        <div v-on:click="route_to('/home')" v-bind:class="{ activesidebar: this.$route.name == 'home' }" class="side-bar-icon-div">
+            <font-awesome-icon class="side-bar-icon" icon="home" />
+        </div>
+        <div v-on:click="route_to('/classes')" v-bind:class="{ activesidebar: this.$route.name == 'classes' }" class="side-bar-icon-div">
+            <font-awesome-icon class="side-bar-icon" icon="file-alt" />
+        </div>
+        <div v-on:click="route_to('/notifications')" v-bind:class="{ activesidebar: this.$route.name == 'notifications' }" class="side-bar-icon-div">
+            <font-awesome-icon class="side-bar-icon" icon="bell" />
+        </div>
+        <div v-on:click="route_to('/messages')" v-bind:class="{ activesidebar: this.$route.name == 'messages' }" class="side-bar-icon-div">
+            <font-awesome-icon class="side-bar-icon" icon="comments" />
+        </div>
+        <div v-on:click="route_to('/users')" v-bind:class="{ activesidebar: this.$route.name == 'users' }" class="side-bar-icon-div">
+            <font-awesome-icon class="side-bar-icon" icon="user-friends" />
+        </div>
+        <div v-on:click="route_to('/events')" v-bind:class="{ activesidebar: this.$route.name == 'events' }" class="side-bar-icon-div">
+            <font-awesome-icon class="side-bar-icon" icon="calendar-week" />
+        </div>
+    </div>
+    <router-view :data="data" />
 </div>

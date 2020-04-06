@@ -12,11 +12,25 @@ export default {
     let token = this.$session.get("token");
     if (token) {
       this.axios.defaults.headers.common["Authorization"] = token;
+      this.get_info()
     } else {
       this.$router.push("/login");
     }
   },
   methods: {
+    get_info(){
+      this.axios.get(process.env.VUE_APP_API_URL + "manager").then(res => {
+        console.log(res.data)
+        this.data = res.data
+      },(error)=>{
+        if (error.response.status == 401) {
+          this.log_out();
+        }
+      });
+    },
+    route_to(page){
+      this.$router.push(page);
+    },
     onItemClick(event, item) {
       if (item.ref == "log_out") {
         this.log_out();
@@ -25,80 +39,7 @@ export default {
   },
   data() {
     return {
-      menu: [
-        /*{
-          href: "/dashboard",
-          title: "Dashboard",
-          icon: {
-            element: "font-awesome-icon",
-            class: "side-bar-icon",
-            attributes: {
-              icon: "tachometer-alt"
-            }
-          }
-        },*/
-        {
-          href: "/users",
-          title: "Usuários",
-          icon: {
-            element: "font-awesome-icon",
-            class: "side-bar-icon",
-            attributes: {
-              icon: "users"
-            }
-          }
-        },
-        {
-          href: "",
-          title: "Loja",
-          ref: "store",
-          icon: {
-            element: "font-awesome-icon",
-            class: "side-bar-icon",
-            attributes: {
-              icon: "store-alt"
-            }
-          },
-          child: [
-            {
-              href: "/lines",
-              title: "Linhas",
-              ref: "line",
-              icon: {
-                element: "font-awesome-icon",
-                class: "side-bar-sub-icon",
-                attributes: {
-                  icon: "tag"
-                }
-              }
-            },
-            {
-              href: "/products",
-              title: "Produtos",
-              ref: "product",
-              icon: {
-                element: "font-awesome-icon",
-                class: "side-bar-sub-icon",
-                attributes: {
-                  icon: "tshirt"
-                }
-              }
-            }
-          ]
-        },
-        {
-          href: "",
-          title: "Sair",
-          ref: "log_out",
-          icon: {
-            element: "font-awesome-icon",
-            class: "side-bar-icon",
-            attributes: {
-              icon: "sign-out-alt"
-            }
-          }
-        }
-      ]
+      data: null
     };
   }
 };
