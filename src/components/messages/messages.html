@@ -1,4 +1,67 @@
 <b-row class="inner-page">
-    <b-col class="user-div" cols="3">1 of 3</b-col>
-    <b-col class="messages-div" cols="9">2 of 3 (wider)</b-col>
+    <b-col class="user-div" cols="3">
+        <div class="messages-title">
+            Mensagens
+        </div>
+        <div class="search-div">
+            <div>Procurar</div>
+            <div>
+                <b-form-input placeholder="Ex: Luiz de Souze"></b-form-input>
+            </div>
+        </div>
+        <div v-if="data">
+            <div v-for="r in data.relatives">
+                <b-row v-on:click="select_relative(r)" class="relative-row">
+                    <b-col class="relative-photo-div" cols="3">
+                        <img class="relative-photo" :src="r.photo" alt="">
+                    </b-col>
+                    <b-col cols="9">
+                        <div class="relative-name">{{r.name}}</div>
+                        <div v-for="s in r.students">
+                            <b-row class="student-div">
+                                <b-col class="student-photo-div" cols="2">
+                                    <img class="student-photo" :src="s.photo" alt="">
+                                </b-col>
+                                <b-col class="student-name-div" cols="10">
+                                    <div class="student-name">{{s.name}}</div>
+                                </b-col>
+                            </b-row>
+                        </div>
+                    </b-col>
+                </b-row>
+            </div>
+        </div>
+    </b-col>
+    <b-col class="messages-div" cols="9">
+        <div v-if="selected_relative" class="selected-relative-div">
+            <b-row class="selected-relative-row">
+                <b-col class="relative-photo-div" cols="3">
+                    <img class="selected-relative-photo" :src="selected_relative.photo" alt="">
+                </b-col>
+                <b-col cols="9">
+                    <div class="selected-relative-name">{{selected_relative.name}}</div>
+                </b-col>
+            </b-row>
+        </div>
+        <div class="chat-div">
+            <div v-for="m in message_list">
+                <div class="message-me-outer" v-if="m.from == 'me'">
+                    <div class="message-me">{{m.msg}}</div>
+                </div>
+                <div class="message-you-outer" v-if="m.from == 'you'">
+                    <div class="message-you">{{m.msg}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-div">
+            <b-row>
+                <b-col cols="11">
+                    <b-form-input :disabled="!selected_relative" v-model="message"></b-form-input>
+                </b-col>
+                <b-col v-on:click="send_message()" cols="1">
+                    <font-awesome-icon class="chat-input-icon" icon="paper-plane" />
+                </b-col>
+            </b-row>
+        </div>
+    </b-col>
 </b-row>

@@ -44,7 +44,8 @@ import {
   faFileAlt,
   faBell,
   faComments,
-  faUserFriends
+  faUserFriends,
+  faPaperPlane
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(
@@ -81,7 +82,8 @@ library.add(
   faFileAlt,
   faBell,
   faComments,
-  faUserFriends
+  faUserFriends,
+  faPaperPlane
 );
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

@@ -1,16 +1,157 @@
 @import "../../main.scss";
 
 
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto{
+    padding: 0 !important;
+}
+
+.inner-page{
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    padding-top: 71px;
+    padding-left: 90px;
+    margin: 0;
+    width: 100vw;
+}
+
 .user-div{
     background-color: $color-lightest;
+    padding: 30px 20px !important;
+    text-align: left;
 }
 
 .messages-div{
     background-color: $color-light;
 }
 
+.messages-title{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.relative-photo{
+    width: 80%;
+    border-radius: 10000px;
+}
 
 
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto{
-    padding: 0 !important;
+.relative-photo-div{
+    text-align: center;
+}
+
+.relative-name{
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+}
+
+.search-div{
+    margin-bottom: 40px;
+}
+
+.relative-row{
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 15px !important;
+    cursor: pointer;
+}
+
+.student-div{
+    background-color: $color-regular;
+    color:white;
+    border-radius: 100px;
+}
+
+.student-name-div{
+    overflow: hidden;
+}   
+
+.student-photo{
+    width: 25px;
+    border-radius: 100px;
+    position: relative;
+    left: -1px;
+}
+
+.student-name{
+    width: 100%;
+    height: 20px;
+    padding: 2px 0;
+}
+
+.chat-input-div{
+    padding: 0 20px;
+    position: absolute;
+    bottom: 0px;
+    background-color: #9CBDFF;
+    width: 100%;
+}
+
+.chat-input-icon{
+    font-size: 30px;
+    position: relative;
+    top: 4px;
+    cursor: pointer;
+}
+
+.selected-relative-div{
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.selected-relative-row{
+    width: 30%;
+}
+
+.selected-relative-photo{
+    width: 50px;
+    border-radius: 10000px;
+}
+
+.selected-relative-name{
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 15px;
+}
+
+.message-me{
+    background-color: #0085FE;
+    padding: 20px;
+    width: fit-content;
+    border-radius: 20px;
+    max-width: 50%;
+    border-top-right-radius: 0;
+    color: white;
+    margin-left: auto;
+    text-align: right;
+}
+
+.message-you{
+    background-color: white;
+    padding: 20px;
+    width: fit-content;
+    max-width: 50%;
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    color: black;
+    margin-right: auto;
+    text-align: left;
+}
+
+.message-me-outer{
+    width: 100%;
+    padding: 20px;
+}
+
+.message-you-outer{
+    width: 100%;
+    padding: 20px;
+}
+
+.chat-div{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: calc( 100vh - 68px - 66px - 15px - 71px );
 }
