@@ -9,7 +9,24 @@ export default {
       selected_relative:null,
       message: "",
       socket : io('http://0.0.0.0:8080'),
-      message_list: []
+      message_list: [
+        {
+          msg: "Olá, quando é o ínicio das aulas?",
+          from: "you"
+        },
+        {
+          msg: "Bom dia Fernando, as aulas vão começar oficialmente no dia 05 de fevereiro",
+          from: "me"
+        },
+        {
+          msg: "Bom dia, nós estamos muito preocupados com essa situação do COVID-19. Gostaria de saber se os eventos vão permanecer de acordo com o calendário.",
+          from: "you"
+        },
+        {
+          msg: "Olá Fernando, vamos sim. Acabamos de mandar um anuncio no app falando mais sobre isso, grata.",
+          from: "me"
+        }
+      ]
     };
   },
   computed: {},
